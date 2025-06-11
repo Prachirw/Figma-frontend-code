@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interactive Boxes</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 40px;
+      background: #f4f4f4;
+    }
+
+    .box {
+      width: 600px;
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .box.collapsed {
+      height: 72px;
+    }
+
+    .box.expanded {
+      height: 260px;
+    }
+
+    .box-header {
+      padding: 24px;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .box-content {
+      opacity: 0;
+      padding: 0 24px 24px;
+      transition: opacity 0.3s ease;
+    }
+
+    .box.expanded .box-content {
+      opacity: 1;
+    }
+
+    .option-group {
+      margin-top: 16px;
+    }
+
+    .option-title {
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .options {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .option {
+      padding: 6px 12px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      background: #fafafa;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .option:hover {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box collapsed" onclick="toggleBox(this)">
+    <div class="box-header">Top Box</div>
+    <div class="box-content">
+      <div class="option-group">
+        <div class="option-title">Choose Color</div>
+        <div class="options">
+          <div class="option">Red</div>
+          <div class="option">Blue</div>
+          <div class="option">Green</div>
+        </div>
+      </div>
+      <div class="option-group">
+        <div class="option-title">Choose Size</div>
+        <div class="options">
+          <div class="option">Small</div>
+          <div class="option">Medium</div>
+          <div class="option">Large</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box collapsed" onclick="toggleBox(this)">
+    <div class="box-header">Middle Box</div>
+    <div class="box-content">
+      <div class="option-group">
+        <div class="option-title">Choose Color</div>
+        <div class="options">
+          <div class="option">Red</div>
+          <div class="option">Blue</div>
+          <div class="option">Green</div>
+        </div>
+      </div>
+      <div class="option-group">
+        <div class="option-title">Choose Size</div>
+        <div class="options">
+          <div class="option">Small</div>
+          <div class="option">Medium</div>
+          <div class="option">Large</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box collapsed" onclick="toggleBox(this)">
+    <div class="box-header">Bottom Box</div>
+    <div class="box-content">
+      <div class="option-group">
+        <div class="option-title">Choose Color</div>
+        <div class="options">
+          <div class="option">Red</div>
+          <div class="option">Blue</div>
+          <div class="option">Green</div>
+        </div>
+      </div>
+      <div class="option-group">
+        <div class="option-title">Choose Size</div>
+        <div class="options">
+          <div class="option">Small</div>
+          <div class="option">Medium</div>
+          <div class="option">Large</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleBox(box) {
+      const allBoxes = document.querySelectorAll('.box');
+      allBoxes.forEach(b => {
+        if (b !== box) b.classList.remove('expanded');
+        b.classList.add('collapsed');
+      });
+      box.classList.toggle('collapsed');
+      box.classList.toggle('expanded');
+    }
+  </script>
+
+</body>
+</html>
